@@ -67,7 +67,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 pt-8 text-center text-gray-500">
-          <p>© {new Date().getFullYear()} श्रीराम Associates / श्री नाथ Associates. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()}  श्रीनाथ Associates. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
