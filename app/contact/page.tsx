@@ -57,7 +57,7 @@ export default function ContactPage() {
                 <div>
                   <h4 className="text-xl font-bold text-[#111111] mb-1">कार्यालय</h4>
                   <p className="text-gray-600 text-lg leading-relaxed">
-                    श्रीराम Associates / श्री नाथ Associates<br />
+                    श्रीनाथ Associates<br />
                     मेन रोड, जवळचे लँडमार्क,<br />
                     तुमचे शहर, महाराष्ट्र
                   </p>
