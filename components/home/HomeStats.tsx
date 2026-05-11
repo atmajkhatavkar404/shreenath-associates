@@ -8,7 +8,7 @@ import { animate } from "framer-motion";
 const stats = [
   {
     id: 1,
-    value: 5000,
+    value: 1550,
     suffix: "+",
     icon: Users,
     description: "समाधानी ग्राहक",
@@ -29,10 +29,17 @@ const stats = [
   },
   {
     id: 4,
-    value: 10,
+    value: 5,
     suffix: "+",
     icon: Award,
     description: "वर्षांचा अनुभव",
+  },
+  {
+    id: 5,
+    value: 100,
+    suffix: "+",
+    icon: Landmark,
+    description: "बँका",
   },
 ];
 
@@ -70,7 +77,7 @@ export default function HomeStats() {
   return (
     <section className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
