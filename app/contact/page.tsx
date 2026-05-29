@@ -29,7 +29,7 @@ export default function ContactPage() {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="flex flex-col lg:flex-row gap-16">
-            
+
             {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -38,7 +38,7 @@ export default function ContactPage() {
               className="w-full lg:w-1/3 space-y-8"
             >
               <h2 className="text-3xl font-bold text-[#111111] mb-8">संपर्क माहिती</h2>
-              
+
               <div className="flex items-start">
                 <div className="w-12 h-12 bg-red-50 text-[#D32F2F] rounded-full flex items-center justify-center flex-shrink-0 mr-4">
                   <Phone size={24} />
@@ -57,7 +57,7 @@ export default function ContactPage() {
                 <div>
                   <h4 className="text-xl font-bold text-[#111111] mb-1">कार्यालय</h4>
                   <p className="text-gray-600 text-lg leading-relaxed">
-                    श्रीराम Associates / श्री नाथ Associates<br />
+                    श्रीनाथ Associates<br />
                     मेन रोड, जवळचे लँडमार्क,<br />
                     तुमचे शहर, महाराष्ट्र
                   </p>
@@ -98,7 +98,7 @@ export default function ContactPage() {
                       <input type="tel" id="phone" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#D32F2F] focus:border-transparent transition-all" placeholder="९८७६५४३२१०" />
                     </div>
                   </div>
-                  
+
                   <div>
                     <label className="block text-gray-700 font-semibold mb-2" htmlFor="service">कर्जाचा प्रकार</label>
                     <select id="service" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#D32F2F] focus:border-transparent transition-all">
@@ -132,12 +132,12 @@ export default function ContactPage() {
             viewport={{ once: true }}
             className="mt-16 rounded-2xl overflow-hidden shadow-lg h-[400px] bg-gray-200"
           >
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.261274198124!2d73.84061211536785!3d18.5171120741122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDMxJzAxLjYiTiA3M8KwNTAnMzQuMSJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
-              width="100%" 
-              height="100%" 
-              style={{ border: 0 }} 
-              allowFullScreen 
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.261274198124!2d73.84061211536785!3d18.5171120741122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDMxJzAxLjYiTiA3M8KwNTAnMzQuMSJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
               loading="lazy"
             ></iframe>
           </motion.div>

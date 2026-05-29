@@ -10,12 +10,12 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="bg-white p-3 rounded-lg inline-block mb-4">
-              <Image 
-                src="/logo.png" 
-                alt="श्री नाथ Associates" 
-                width={200} 
-                height={50} 
-                className="h-12 w-auto object-contain" 
+              <Image
+                src="/logo.png"
+                alt="श्री नाथ Associates"
+                width={200}
+                height={50}
+                className="h-12 w-auto object-contain"
               />
             </div>
             <p className="text-gray-400 mb-6">
@@ -67,7 +67,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 pt-8 text-center text-gray-500">
-          <p>© {new Date().getFullYear()} श्रीराम Associates / श्री नाथ Associates. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} श्रीनाथ Associates.   All Rights Reserved.</p>
         </div>
       </div>
     </footer>
