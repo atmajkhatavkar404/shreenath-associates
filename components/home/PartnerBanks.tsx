@@ -13,6 +13,7 @@ export default function PartnerBanks() {
     <section className="py-16 bg-gray-50 border-t border-b border-gray-100 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
         <h3 className="text-2xl font-bold text-black-400">आमचे बँकिंग भागीदार</h3>
+        <p className="text-xl text-gray-600 mb-8">६०+ राष्ट्रीयकृत बँका, एनबीएफसी (NBFC) आणि फायनान्स कंपन्या</p>
       </div>
 
       <div className="relative flex w-full">

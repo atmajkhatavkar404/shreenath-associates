@@ -54,13 +54,17 @@ export default function Footer() {
               <li className="flex items-start">
                 <Phone className="text-[#D32F2F] mr-3 mt-1" size={20} />
                 <div className="text-gray-400">
-                  <a href="tel:+919860946943" className="block hover:text-white">9860946943</a>
-                  <a href="tel:+919112421191" className="block hover:text-white">9112421191</a>
+                  <a href="tel:+919860946943" className="block hover:text-white">९८६०९४६९४३</a>
+                  <a href="tel:+919371513506" className="block hover:text-white">९३७१५१३५०६</a>
                 </div>
               </li>
               <li className="flex items-start">
                 <MapPin className="text-[#D32F2F] mr-3 mt-1" size={20} />
-                <span className="text-gray-400">Office Address Here</span>
+                <span className="text-gray-400">श्रीनाथ Associates<br />
+                  मालती अपार्टमेंट, गणेश नगर,<br />
+                  एसटी स्टँड पाठीमागील रोड, <br />
+                  वारणा सहकारी बँकेच्या वरती, <br />
+                  उरुण-ईश्वरपूर 415 409.</span>
               </li>
             </ul>
           </div>

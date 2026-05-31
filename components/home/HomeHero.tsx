@@ -52,17 +52,6 @@ export default function HomeHero() {
           </div>
         </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 1.5 }}
-      >
-        <div className="w-6 h-10 border-2 border-white/70 rounded-full flex justify-center p-1">
-          <div className="w-1.5 h-3 bg-white/70 rounded-full" />
-        </div>
-      </motion.div>
     </section>
   );
 }

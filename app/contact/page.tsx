@@ -1,9 +1,31 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const { name, phone, service, message } = formData;
+
+    let text = `नमस्कार, मला चौकशी करायची आहे:\n\n`;
+    if (name) text += `*नाव:* ${name}\n`;
+    if (phone) text += `*मोबाईल नंबर:* ${phone}\n`;
+    if (service) text += `*कर्जाचा प्रकार:* ${service}\n`;
+    if (message) text += `*संदेश:* ${message}\n`;
+
+    const whatsappUrl = `https://wa.me/919860946943?text=${encodeURIComponent(text)}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <div className="py-20 bg-white">
       <section className="bg-[#111111] text-white py-24 px-4 sm:px-6 lg:px-8 mt-[-80px] pt-[120px]">
@@ -46,7 +68,8 @@ export default function ContactPage() {
                 <div>
                   <h4 className="text-xl font-bold text-[#111111] mb-1">मोबाईल नंबर</h4>
                   <a href="tel:+919860946943" className="block text-gray-600 hover:text-[#D32F2F] transition-colors text-lg">९८६०९४६९४३</a>
-                  <a href="tel:+919112421191" className="block text-gray-600 hover:text-[#D32F2F] transition-colors text-lg">९११२४२११९१</a>
+
+                  <a href="tel:+919371513506" className="block text-gray-600 hover:text-[#D32F2F] transition-colors text-lg">९३७१५१३५०६</a>
                 </div>
               </div>
 
@@ -58,8 +81,10 @@ export default function ContactPage() {
                   <h4 className="text-xl font-bold text-[#111111] mb-1">कार्यालय</h4>
                   <p className="text-gray-600 text-lg leading-relaxed">
                     श्रीनाथ Associates<br />
-                    मेन रोड, जवळचे लँडमार्क,<br />
-                    तुमचे शहर, महाराष्ट्र
+                    मालती अपार्टमेंट, गणेश नगर,<br />
+                    एसटी स्टँड पाठीमागील रोड, <br />
+                    वारणा सहकारी बँकेच्या वरती, <br />
+                    उरुण-ईश्वरपूर 415 409.
                   </p>
                 </div>
               </div>
@@ -71,7 +96,7 @@ export default function ContactPage() {
                 <div>
                   <h4 className="text-xl font-bold text-[#111111] mb-1">कामाची वेळ</h4>
                   <p className="text-gray-600 text-lg">
-                    सोमवार - शनिवार: १०:०० AM - ६:०० PM<br />
+                    सोमवार - शनिवार: १०:०० AM - ५:०० PM<br />
                     रविवार: सुट्टी
                   </p>
                 </div>
@@ -87,21 +112,43 @@ export default function ContactPage() {
             >
               <div className="bg-white p-8 md:p-12 rounded-2xl shadow-xl border border-gray-100">
                 <h2 className="text-3xl font-bold text-[#111111] mb-8">आम्हाला संदेश पाठवा</h2>
-                <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-gray-700 font-semibold mb-2" htmlFor="name">तुमचे नाव</label>
-                      <input type="text" id="name" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#D32F2F] focus:border-transparent transition-all" placeholder="उदा. रमेश जाधव" />
+                      <input
+                        type="text"
+                        id="name"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#D32F2F] focus:border-transparent transition-all"
+                        placeholder="उदा. रमेश जाधव"
+                      />
                     </div>
                     <div>
                       <label className="block text-gray-700 font-semibold mb-2" htmlFor="phone">मोबाईल नंबर</label>
-                      <input type="tel" id="phone" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#D32F2F] focus:border-transparent transition-all" placeholder="९८७६५४३२१०" />
+                      <input
+                        type="tel"
+                        id="phone"
+                        required
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#D32F2F] focus:border-transparent transition-all"
+                        placeholder="९८७६५४३२१०"
+                      />
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-gray-700 font-semibold mb-2" htmlFor="service">कर्जाचा प्रकार</label>
-                    <select id="service" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#D32F2F] focus:border-transparent transition-all">
+                    <select
+                      id="service"
+                      required
+                      value={formData.service}
+                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#D32F2F] focus:border-transparent transition-all"
+                    >
                       <option value="">निवडा...</option>
                       <option value="गृह कर्ज">गृह कर्ज</option>
                       <option value="व्यवसाय कर्ज">व्यवसाय कर्ज</option>
@@ -113,11 +160,22 @@ export default function ContactPage() {
 
                   <div>
                     <label className="block text-gray-700 font-semibold mb-2" htmlFor="message">तुमचा संदेश</label>
-                    <textarea id="message" rows={4} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#D32F2F] focus:border-transparent transition-all" placeholder="तुमची गरज किंवा प्रश्न येथे लिहा..."></textarea>
+                    <textarea
+                      id="message"
+                      rows={4}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#D32F2F] focus:border-transparent transition-all"
+                      placeholder="तुमची गरज किंवा प्रश्न येथे लिहा..."
+                    ></textarea>
                   </div>
 
-                  <button type="submit" className="w-full bg-[#111111] text-white py-4 rounded-lg font-bold text-lg hover:bg-[#D32F2F] transition-colors">
-                    संदेश पाठवा
+                  <button
+                    type="submit"
+                    className="w-full bg-[#25D366] text-white py-4 rounded-lg font-bold text-lg hover:bg-[#1fae54] transition-colors flex items-center justify-center gap-2 shadow-md"
+                  >
+                    <MessageCircle size={24} fill="currentColor" />
+                    WhatsApp वर चौकशी करा
                   </button>
                 </form>
               </div>
@@ -133,7 +191,7 @@ export default function ContactPage() {
             className="mt-16 rounded-2xl overflow-hidden shadow-lg h-[400px] bg-gray-200"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.261274198124!2d73.84061211536785!3d18.5171120741122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDMxJzAxLjYiTiA3M8KwNTAnMzQuMSJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+              src="https://maps.google.com/maps?q=17.0473999,74.2598963&t=&z=17&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -141,6 +199,18 @@ export default function ContactPage() {
               loading="lazy"
             ></iframe>
           </motion.div>
+
+          <div className="mt-6 text-center">
+            <a
+              href="https://www.google.com/maps/place/17%C2%B002'50.6%22N+74%C2%B015'35.6%22E/@17.0475544,74.2590887,19z/data=!4m4!3m3!8m2!3d17.0473999!4d74.2598963?hl=en&entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-6 py-3.5 bg-[#D32F2F] text-white rounded-xl font-bold hover:bg-[#b71c1c] transition-colors text-base md:text-lg shadow-md gap-2"
+            >
+              <MapPin size={20} />
+              गुगल मॅपवर मार्ग पहा (View on Google Maps)
+            </a>
+          </div>
         </div>
       </section>
     </div>

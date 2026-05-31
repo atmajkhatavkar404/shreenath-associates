@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { FileCheck, Phone } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FileCheck, Phone, X, Award, Briefcase, FileText } from "lucide-react";
 import Image from "next/image";
 
 const servicesList = [
@@ -121,7 +122,7 @@ const servicesList = [
       "डोमिसाईल प्रमाणपत्र (महाराष्ट्र बाहेर जन्म असल्यास)",
       "शैक्षणिक प्रमाणपत्र",
       "प्रोजेक्ट रिपोर्ट",
-      "उद्याम नोंदणी प्रमाणपत्र (Udyam Registration)",
+      "उद्योजक नोंदणी प्रमाणपत्र (Udyam Registration)",
       "बँक पासबुक / बँक स्टेटमेंट",
       "मोबाईल नंबर",
       "ई-मेल आयडी",
@@ -133,7 +134,7 @@ const servicesList = [
       "भाडे करार / जागेचे कागदपत्र",
       "लाईट बिल",
       "GST प्रमाणपत्र (लागू असल्यास)",
-      "शॉप अॅक्ट परवाना",
+      "शॉप ॲक्ट परवाना",
       "भागीदारी करारपत्र (Partnership असल्यास)",
       "संस्थेचे नोंदणी प्रमाणपत्र",
       "Authorization Letter",
@@ -155,7 +156,7 @@ const servicesList = [
       "जन्म दाखला / शाळा सोडल्याचा दाखला",
       "शैक्षणिक प्रमाणपत्र (किमान ८ वी पास - लागू असल्यास)",
       "प्रोजेक्ट रिपोर्ट",
-      "उद्याम नोंदणी प्रमाणपत्र (Udyam Registration)",
+      "उद्योजक नोंदणी प्रमाणपत्र (Udyam Registration)",
       "मोबाईल नंबर",
       "ई-मेल आयडी",
       "बँक पासबुक / बँक स्टेटमेंट",
@@ -220,7 +221,7 @@ const servicesList = [
       "मोबाईल नंबर",
       "ई-मेल आयडी",
       "बँक पासबुक / बँक स्टेटमेंट",
-      "उद्याम नोंदणी प्रमाणपत्र (Udyam Registration)",
+      "उद्योजक नोंदणी प्रमाणपत्र (Udyam Registration)",
       "फूड लायसन्स / FSSAI प्रमाणपत्र",
       "प्रोजेक्ट रिपोर्ट",
       "व्यवसायाचा अंदाजित खर्च तपशील",
@@ -242,6 +243,16 @@ const servicesList = [
       "अन्न प्रक्रिया व्यवसायाचा अनुभव प्रमाणपत्र (लागू असल्यास)"
     ],
     image: "/images/pmfme.jpg"
+  },
+  {
+    title: "मायक्रो लोन (Micro Loan)",
+    docs: [
+      "आधार कार्ड",
+      "पॅन कार्ड",
+      "मोबाईल नंबर",
+      "ई-मेल आयडी",
+    ],
+    image: "/images/micro-loan.jpg"
   },
   {
     title: "यंत्रसामग्री कर्ज (Machinery Loan)",
@@ -313,8 +324,8 @@ const servicesList = [
       "बँक स्टेटमेंट (६ ते १२ महिन्यांचे)",
       "ITR / इन्कम टॅक्स रिटर्न",
       "GST रिटर्न",
-      "उद्याम नोंदणी प्रमाणपत्र (Udyam Registration)",
-      "शॉप अॅक्ट परवाना",
+      "उद्योजक नोंदणी प्रमाणपत्र (Udyam Registration)",
+      "शॉप ॲक्ट परवाना",
       "व्यवसाय नोंदणी प्रमाणपत्र",
       "प्रॉफिट अँड लॉस स्टेटमेंट",
       "बॅलन्स शीट",
@@ -424,7 +435,7 @@ const servicesList = [
       "शेड / बांधकामाचा अंदाजपत्रक",
       "उद्याम नोंदणी प्रमाणपत्र (लागू असल्यास)",
       "GST प्रमाणपत्र (लागू असल्यास)",
-      "शॉप अॅक्ट परवाना",
+      "शॉप ॲक्ट परवाना",
       "जात प्रमाणपत्र (लागू असल्यास)",
       "जात वैधता प्रमाणपत्र",
       "NOC (लागू असल्यास)",
@@ -485,8 +496,8 @@ const servicesList = [
       "बँक पासबुक / बँक स्टेटमेंट (६ ते १२ महिन्यांचे)",
       "ITR / इन्कम टॅक्स रिटर्न (२ ते ३ वर्षांचे)",
       "GST रिटर्न",
-      "उद्याम नोंदणी प्रमाणपत्र (Udyam Registration)",
-      "शॉप अॅक्ट परवाना",
+      "उद्योजक नोंदणी प्रमाणपत्र (Udyam Registration)",
+      "शॉप ॲक्ट परवाना",
       "व्यवसाय नोंदणी प्रमाणपत्र",
       "प्रॉफिट अँड लॉस स्टेटमेंट",
       "बॅलन्स शीट",
@@ -507,7 +518,7 @@ const servicesList = [
       "मशिनरी / उपकरणांचे कोटेशन (लागू असल्यास)",
       "NOC (लागू असल्यास)"
     ],
-    image: "/images/WORKING-CAPITAL-LOAN.jpg"
+    image: "/images/working-capital.jpg"
   },
   {
     title: "प्रोजेक्ट फंडिंग",
@@ -524,13 +535,13 @@ const servicesList = [
       "बॅलन्स शीट",
       "CA ऑडिट रिपोर्ट",
       "कॅश फ्लो स्टेटमेंट",
-      "उद्याम नोंदणी प्रमाणपत्र (Udyam Registration)",
+      "उद्योजक नोंदणी प्रमाणपत्र (Udyam Registration)",
       "GST प्रमाणपत्र व GST रिटर्न",
-      "शॉप अॅक्ट परवाना",
+      "शॉप ॲक्ट परवाना",
       "व्यवसाय नोंदणी प्रमाणपत्र",
       "भागीदारी करारपत्र (Partnership असल्यास)",
       "MOA / AOA (कंपनी असल्यास)",
-      "Authorization Letter",
+      "Authorization Letter / प्राधिकृत पत्र",
       "डिटेल प्रोजेक्ट रिपोर्ट (DPR)",
       "व्यवसाय योजना (Business Plan)",
       "प्रोजेक्ट खर्चाचा तपशील",
@@ -561,8 +572,8 @@ const servicesList = [
       "बँक पासबुक / बँक स्टेटमेंट (६ ते १२ महिन्यांचे)",
       "ITR / इन्कम टॅक्स रिटर्न (२ ते ३ वर्षांचे)",
       "GST रिटर्न",
-      "उद्याम नोंदणी प्रमाणपत्र (Udyam Registration)",
-      "शॉप अॅक्ट परवाना",
+      "उद्योजक नोंदणी प्रमाणपत्र (Udyam Registration)",
+      "शॉप ॲक्ट परवाना",
       "व्यवसाय नोंदणी प्रमाणपत्र",
       "प्रॉफिट अँड लॉस स्टेटमेंट",
       "बॅलन्स शीट",
@@ -585,7 +596,7 @@ const servicesList = [
       "बिझनेस कंटिन्यूटी प्रूफ",
       "टॅक्स ऑडिट रिपोर्ट"
     ],
-    image: "/images/working-capital.jpg"
+    image: "/images/working-capital.png"
   },
   {
     title: "क्रेडिट कार्ड",
@@ -616,9 +627,30 @@ const servicesList = [
     ],
     image: "/images/credit-card.jpg"
   },
+
 ];
 
+const getCategory = (title: string) => {
+  const yojanaKeywords = ["योजना", "L.O.I", "महामंडळ"];
+  const docKeywords = ["लायसन्स", "लायसनस", "फायल", "रिपोर्ट", "आधार"];
+
+  if (yojanaKeywords.some(keyword => title.includes(keyword))) {
+    return "yojana";
+  }
+  if (docKeywords.some(keyword => title.includes(keyword))) {
+    return "documents";
+  }
+  return "loan";
+};
+
 export default function ServicesPage() {
+  const [activeTab, setActiveTab] = useState<"loan" | "yojana" | "documents">("loan");
+  const [selectedService, setSelectedService] = useState<typeof servicesList[0] | null>(null);
+
+  const filteredServices = servicesList.filter(service => {
+    return getCategory(service.title) === activeTab;
+  });
+
   return (
     <div className="py-20 bg-gray-50 min-h-screen">
       <section className="bg-[#111111] text-white py-24 px-4 sm:px-6 lg:px-8 mt-[-80px] pt-[120px]">
@@ -634,66 +666,185 @@ export default function ServicesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-2xl text-gray-300"
+            className="text-xl md:text-2xl text-gray-300"
           >
-            तुमच्या सर्व गरजांसाठी आम्ही खालील सेवा पुरवतो. प्रत्येक सेवेसाठी आवश्यक कागदपत्रांची यादी पहा.
+            तुमच्या सर्व आर्थिक व शासकीय योजनांच्या गरजेसाठी आम्ही योग्य मार्गदर्शन करतो.
           </motion.p>
         </div>
       </section>
 
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {servicesList.map((service, index) => (
+      <section className="py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          {/* Tab Navigation */}
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-12">
+            <button
+              onClick={() => setActiveTab("loan")}
+              className={`px-6 py-3.5 md:px-8 md:py-4 rounded-xl font-bold text-base md:text-lg transition-all duration-300 flex items-center gap-2 shadow-sm ${activeTab === "loan"
+                  ? "bg-[#D32F2F] text-white shadow-red-500/20 scale-105"
+                  : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+                }`}
+            >
+              <Award size={20} />
+              कर्ज सेवा (Loans)
+            </button>
+            <button
+              onClick={() => setActiveTab("yojana")}
+              className={`px-6 py-3.5 md:px-8 md:py-4 rounded-xl font-bold text-base md:text-lg transition-all duration-300 flex items-center gap-2 shadow-sm ${activeTab === "yojana"
+                  ? "bg-[#D32F2F] text-white shadow-red-500/20 scale-105"
+                  : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+                }`}
+            >
+              <Briefcase size={20} />
+              शासकीय योजना (Schemes)
+            </button>
+            <button
+              onClick={() => setActiveTab("documents")}
+              className={`px-6 py-3.5 md:px-8 md:py-4 rounded-xl font-bold text-base md:text-lg transition-all duration-300 flex items-center gap-2 shadow-sm ${activeTab === "documents"
+                  ? "bg-[#D32F2F] text-white shadow-red-500/20 scale-105"
+                  : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+                }`}
+            >
+              <FileText size={20} />
+              इतर सेवा व कागदपत्रे
+            </button>
+          </div>
+
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+            {filteredServices.map((service, index) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden flex flex-col hover:shadow-2xl transition-shadow duration-300"
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300 cursor-pointer group"
+                onClick={() => setSelectedService(service)}
               >
-                <div className="relative h-64 w-full">
+                <div className="relative h-48 w-full bg-white overflow-hidden">
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-cover"
+                    className="object-contain md:object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <h2 className="absolute bottom-4 left-4 right-4 text-2xl font-bold text-white">{service.title}</h2>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <h2 className="absolute bottom-4 left-4 right-4 text-xl font-bold text-white leading-tight">
+                    {service.title}
+                  </h2>
                 </div>
 
-                <div className="p-8 flex-grow flex flex-col">
-                  <h3 className="text-xl font-bold text-[#D32F2F] flex items-center mb-4">
-                    <FileCheck size={24} className="mr-2" /> आवश्यक कागदपत्रे:
-                  </h3>
+                <div className="p-6 flex-grow flex flex-col justify-between">
+                  <p className="text-gray-500 mb-5 flex items-center gap-1.5 text-sm">
+                    <FileCheck size={16} className="text-[#D32F2F]" />
+                    {service.docs.length} कागदपत्रे आवश्यक
+                  </p>
 
-                  <ul className="text-lg text-gray-700 space-y-2 mb-8 flex-grow">
-                    {service.docs.map((doc, i) => (
-                      <li key={i} className="flex items-start">
-                        <span className="text-[#D32F2F] font-bold mr-2">•</span>
-                        <span>{doc}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-auto">
-                    <a
-                      href={`https://wa.me/919860946943?text=नमस्कार,%20मला%20${encodeURIComponent(service.title)}%20विषयी%20माहिती%20हवी%20आहे.`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full inline-flex items-center justify-center px-6 py-4 bg-[#25D366] text-white rounded-xl font-bold hover:bg-[#1fae54] transition-colors text-lg"
-                    >
-                      <Phone size={20} className="mr-2" /> WhatsApp वर चौकशी करा
-                    </a>
-                  </div>
+                  <button
+                    className="w-full py-3 bg-[#111111] text-white rounded-xl font-bold hover:bg-[#D32F2F] transition-colors flex items-center justify-center gap-2 text-base"
+                  >
+                    माहिती व कागदपत्रे पहा
+                  </button>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Modal Detail View */}
+      <AnimatePresence>
+        {selectedService && (
+          <div className="fixed inset-0 z-50 overflow-y-auto">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedService(null)}
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm"
+            />
+
+            {/* Modal Box */}
+            <div className="flex min-h-screen items-center justify-center p-4">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                transition={{ type: "spring", duration: 0.4 }}
+                className="relative w-full max-w-2xl rounded-3xl bg-white p-6 md:p-8 shadow-2xl overflow-hidden border border-gray-100 z-10"
+              >
+                {/* Close Button */}
+                <button
+                  onClick={() => setSelectedService(null)}
+                  className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 hover:bg-gray-100 p-2 rounded-full transition-colors"
+                  aria-label="Close modal"
+                >
+                  <X size={24} />
+                </button>
+
+                {/* Header */}
+                <div className="flex flex-col sm:flex-row gap-6 mb-6">
+                  {selectedService.image && (
+                    <div className="relative w-full sm:w-40 h-28 bg-gray-50 rounded-xl overflow-hidden flex-shrink-0">
+                      <Image
+                        src={selectedService.image}
+                        alt={selectedService.title}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  )}
+                  <div>
+                    <span className="inline-block px-3 py-1 bg-red-50 text-[#D32F2F] text-xs font-semibold rounded-full mb-2">
+                      {getCategory(selectedService.title) === "loan"
+                        ? "कर्ज सेवा"
+                        : getCategory(selectedService.title) === "yojana"
+                          ? "शासकीय योजना"
+                          : "इतर सेवा व कागदपत्रे"}
+                    </span>
+                    <h2 className="text-2xl md:text-3xl font-bold text-[#111111] pr-6">
+                      {selectedService.title}
+                    </h2>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="border-t border-b border-gray-100 py-6 my-4">
+                  <h3 className="text-lg font-bold text-[#D32F2F] flex items-center mb-4">
+                    <FileCheck size={20} className="mr-2" /> आवश्यक कागदपत्रे:
+                  </h3>
+                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[35vh] overflow-y-auto pr-2">
+                    {selectedService.docs.map((doc: string, i: number) => (
+                      <li key={i} className="flex items-start text-gray-700">
+                        <span className="text-[#D32F2F] font-bold mr-2">•</span>
+                        <span className="text-base md:text-lg">{doc}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Footer Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 mt-6">
+                  <a
+                    href={`https://wa.me/919860946943?text=नमस्कार,%20मला%20${encodeURIComponent(selectedService.title)}%20विषयी%20माहिती%20हवी%20आहे.`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-grow inline-flex items-center justify-center px-6 py-3.5 bg-[#25D366] text-white rounded-xl font-bold hover:bg-[#1fae54] transition-colors text-base md:text-lg shadow-md"
+                  >
+                    <Phone size={20} className="mr-2" /> WhatsApp वर चौकशी करा
+                  </a>
+                  <button
+                    onClick={() => setSelectedService(null)}
+                    className="px-6 py-3.5 bg-gray-100 text-gray-700 rounded-xl font-bold hover:bg-gray-200 transition-colors text-base md:text-lg"
+                  >
+                    बंद करा
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
